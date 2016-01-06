@@ -1,9 +1,6 @@
 FROM php:apache
 MAINTAINER daniel@dionix.at
 
-# GitHub Personal access token
-ARG GITHUB_OAUTH_TOKEN
-
 # Typo3 version to install
 ENV TYPO3_VERSION 7.6.2
 # Typo3 backend admin username
@@ -60,14 +57,6 @@ RUN cat /var/www/html/composer.json
 
 # install git client, will be needed by PHP composer
 RUN apt-get install -y git
-
-# set the GitHub Personal access token
-RUN mkdir /root/.composer && \
-	echo "{\n\
-    \"github-oauth\": {\n\
-        \"github.com\": \"${GITHUB_OAUTH_TOKEN}\"\n\
-    }\n\
-}" > /root/.composer/auth.json
 
 # install Typo3
 RUN cd /var/www/html && \
