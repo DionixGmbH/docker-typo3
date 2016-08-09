@@ -2,7 +2,7 @@ FROM php:apache
 MAINTAINER daniel@dionix.at
 
 # Typo3 version to install
-ENV TYPO3_VERSION 7.6.2
+ENV TYPO3_VERSION 7.6.10
 # Typo3 backend admin username
 ENV TYPO3_ADMIN_USER admin
 # Typo3 backend admin password
@@ -41,7 +41,8 @@ RUN echo "{\n\
 	\"license\": \"GPL-2.0+\",\n\
 	\"config\": {\n\
 		\"vendor-dir\": \"Packages/Libraries\",\n\
-		\"bin-dir\": \"bin\"\n\
+		\"bin-dir\": \"bin\",\n\
+		\"secure-http\": false\n\
 	},\n\
 	\"scripts\": {\n\
 		\"post-update-cmd\": \"Helhum\\\\\\\\Typo3Console\\\\\\\\Composer\\\\\\\\InstallerScripts::postUpdateAndInstall\",\n\
